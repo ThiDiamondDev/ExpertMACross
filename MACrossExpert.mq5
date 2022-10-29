@@ -48,6 +48,13 @@ CustomMoney *_money;
 //+------------------------------------------------------------------+
 int OnInit()
   {
+//--- Demo, contest or real account
+   ENUM_ACCOUNT_TRADE_MODE account_type=(ENUM_ACCOUNT_TRADE_MODE)AccountInfoInteger(ACCOUNT_TRADE_MODE);
+//--- Now transform the value of  the enumeration into an understandable form
+   string trade_mode;
+   if(account_type != ACCOUNT_TRADE_MODE_DEMO)
+      return(INIT_FAILED);
+
 //--- Initializing expert
    if(!ExtExpert.Init(Symbol(),Period(),ExpertEveryTick,ExpertMagicNumber))
      {
